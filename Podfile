@@ -10,6 +10,7 @@ target 'search' do
   #Connection
   pod 'Alamofire'
   pod 'SwiftyJSON'
+  pod 'RangeSeekSlider'
   
   target 'searchTests' do
     inherit! :search_paths

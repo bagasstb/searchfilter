@@ -15,6 +15,8 @@
 		80B67239205AA0A100FD0780 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80B67238205AA0A100FD0780 /* Assets.xcassets */; };
 		80B6723C205AA0A100FD0780 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80B6723A205AA0A100FD0780 /* LaunchScreen.storyboard */; };
 		80B67247205AA0A100FD0780 /* searchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B67246205AA0A100FD0780 /* searchTests.swift */; };
+		80B67252205AA44200FD0780 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B67251205AA44200FD0780 /* Connection.swift */; };
+		80B67254205AA7B200FD0780 /* Curve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B67253205AA7B200FD0780 /* Curve.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +43,8 @@
 		80B67242205AA0A100FD0780 /* searchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = searchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		80B67246205AA0A100FD0780 /* searchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchTests.swift; sourceTree = "<group>"; };
 		80B67248205AA0A100FD0780 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		80B67251205AA44200FD0780 /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
+		80B67253205AA7B200FD0780 /* Curve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Curve.swift; sourceTree = "<group>"; };
 		A42906F391BD0DCF0B912C4C /* Pods-search.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-search.release.xcconfig"; path = "Pods/Target Support Files/Pods-search/Pods-search.release.xcconfig"; sourceTree = "<group>"; };
 		E356F1699EF923662F2C5CC4 /* Pods-searchTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-searchTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-searchTests/Pods-searchTests.release.xcconfig"; sourceTree = "<group>"; };
 		FAFFF0CC93BB6421D1FFBA7D /* Pods_searchTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_searchTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,6 +93,8 @@
 		80B67230205AA0A100FD0780 /* search */ = {
 			isa = PBXGroup;
 			children = (
+				80B67251205AA44200FD0780 /* Connection.swift */,
+				80B67253205AA7B200FD0780 /* Curve.swift */,
 				80B67231205AA0A100FD0780 /* AppDelegate.swift */,
 				80B67233205AA0A100FD0780 /* ViewController.swift */,
 				80B67235205AA0A100FD0780 /* Main.storyboard */,
@@ -258,11 +264,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-search/Pods-search-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/RangeSeekSlider/RangeSeekSlider.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RangeSeekSlider.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,7 +352,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				80B67234205AA0A100FD0780 /* ViewController.swift in Sources */,
+				80B67252205AA44200FD0780 /* Connection.swift in Sources */,
 				80B67232205AA0A100FD0780 /* AppDelegate.swift in Sources */,
+				80B67254205AA7B200FD0780 /* Curve.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -558,6 +568,7 @@
 				80B6724D205AA0A100FD0780 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		80B6724E205AA0A100FD0780 /* Build configuration list for PBXNativeTarget "searchTests" */ = {
 			isa = XCConfigurationList;
@@ -566,6 +577,7 @@
 				80B67250205AA0A100FD0780 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
