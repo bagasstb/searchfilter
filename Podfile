@@ -11,6 +11,8 @@ target 'search' do
   pod 'Alamofire'
   pod 'SwiftyJSON'
   pod 'RangeSeekSlider'
+  pod 'SDWebImage'
+  pod 'KeychainSwift'
   
   target 'searchTests' do
     inherit! :search_paths
