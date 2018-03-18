@@ -27,7 +27,6 @@ class Filter: UIViewController, RangeSeekSliderDelegate {
     var wholeshale = true
     
     let key = KeychainSwift()
-    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,30 +41,23 @@ class Filter: UIViewController, RangeSeekSliderDelegate {
         let keyWhole = key.getBool("wholeSale")
         let keyOfficial = key.getBool("official")
         let keyGold = key.get("gold")
+        
         if keyMax != ""{
             maxValue.text = "Rp \(Formatter().separator(value: keyMax))"
             let maxFloat = NumberFormatter().number(from: keyMax!)
             seeker.selectedMaxValue = CGFloat(maxFloat!)
-            print("maxFlloat: \(CGFloat(maxFloat!))")
-            //seeker.maxValue = CGFloat(maxFloat!)
         }else{
             maxValue.text = "Rp 8.000.000"
             seeker.selectedMaxValue = CGFloat(max)
-            print("max reset \(CGFloat(max))")
-            //seeker.maxValue = CGFloat(max)
         }
         
         if keyMin != ""{
             minValue.text = "Rp \(Formatter().separator(value: keyMin))"
             let minFloat = NumberFormatter().number(from: keyMin!)
             seeker.selectedMinValue = CGFloat(minFloat!)
-            print("minFloat: \(CGFloat(minFloat!))")
-            //seeker.minValue = CGFloat(minFloat!)
         }else{
             minValue.text = "Rp 10.000"
             seeker.selectedMinValue = CGFloat(min)
-            print("min reset\(CGFloat(min))")
-            //seeker.minValue = CGFloat(min)
         }
         
         if keyOfficial != nil{
@@ -95,7 +87,6 @@ class Filter: UIViewController, RangeSeekSliderDelegate {
         if keyWhole != nil{
             wholeSaleSlide.setOn(keyWhole!, animated: true)
         }
-        
     }
     
     func rangeSeekSlider(_ slider: RangeSeekSlider, didChange minValue: CGFloat, maxValue: CGFloat) {
@@ -127,13 +118,7 @@ class Filter: UIViewController, RangeSeekSliderDelegate {
         key.set(max.description, forKey: "max")
         key.set(min.description, forKey: "min")
         key.set(wholeshale, forKey: "wholeSale")
-        toView(identifier: "mainMenu")
-    }
-    
-    func toView(identifier: String){
-        let homePage = mainStoryboard.instantiateViewController(withIdentifier: identifier)
-        let appDelegate:AppDelegate = (UIApplication.shared.delegate as? AppDelegate)!
-        appDelegate.window?.rootViewController = homePage
+        Move().toView(identifier: "mainMenu")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -154,7 +139,6 @@ class Filter: UIViewController, RangeSeekSliderDelegate {
                 
             }
         }
-       
     }
     
     @IBAction func reset(_ sender: UIBarButtonItem) {

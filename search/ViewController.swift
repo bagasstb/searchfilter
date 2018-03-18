@@ -28,22 +28,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectioSetting()
+        CollectionSetting().set(collection: collectionView)
         loadData(row: 10, lastRow: 0)
-       
-    }
-    
-    func collectioSetting(){
-        let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.sectionInset = UIEdgeInsets(top: 0,left: 5,bottom: 0,right: 5)
-        layout.minimumInteritemSpacing = 0
-        layout.itemSize = CGSize(width:(self.collectionView.frame.size.width - 20)/2, height : (self.collectionView.frame.size.height)/2.5)
-        collectionView!.collectionViewLayout = layout
     }
     
     func loadData(row: Int, lastRow: Int){
-        
-        Service().Registered(url: url(row: row)){
+        Service().Registered(url: Service().setUrl(row: row)){
             (data: DataResponse) in
             switch data.result{
             case .success(let data):
@@ -80,15 +70,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
-    func url(row: Int)-> String{
-        var url = ""
-        if key.get("max") != nil{
-            url = Service().ulr(name: "Samsung", min: key.get("min")!, max: key.get("max")!, wholeshale: key.getBool("wholeSale")!, official: key.getBool("official")!, gold: key.get("gold")!, start: 0, row: row)
-        }else{
-            url = Service().ulr(name: "Samsung", min: "10000", max: "100000", wholeshale: true, official: true, gold: "2", start: 0, row: row)
-        }
-        return url
-    }
+    //Collection delegate
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1

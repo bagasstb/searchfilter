@@ -21,7 +21,6 @@ class ShopType: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareSwitch()
-        // Do any additional setup after loading the view.
     }
     
     func prepareSwitch(){
