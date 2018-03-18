@@ -21,7 +21,6 @@
 		80B67252205AA44200FD0780 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B67251205AA44200FD0780 /* Connection.swift */; };
 		80B67254205AA7B200FD0780 /* Curve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B67253205AA7B200FD0780 /* Curve.swift */; };
 		80E32DF8205C0697008D8B7C /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E32DF7205C0697008D8B7C /* CollectionViewCell.swift */; };
-		80E32DFA205C18FC008D8B7C /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E32DF9205C18FC008D8B7C /* Image.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +53,6 @@
 		80B67251205AA44200FD0780 /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		80B67253205AA7B200FD0780 /* Curve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Curve.swift; sourceTree = "<group>"; };
 		80E32DF7205C0697008D8B7C /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
-		80E32DF9205C18FC008D8B7C /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		A42906F391BD0DCF0B912C4C /* Pods-search.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-search.release.xcconfig"; path = "Pods/Target Support Files/Pods-search/Pods-search.release.xcconfig"; sourceTree = "<group>"; };
 		E356F1699EF923662F2C5CC4 /* Pods-searchTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-searchTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-searchTests/Pods-searchTests.release.xcconfig"; sourceTree = "<group>"; };
 		FAFFF0CC93BB6421D1FFBA7D /* Pods_searchTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_searchTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,7 +137,6 @@
 			isa = PBXGroup;
 			children = (
 				80A81021205C6AE90059BB22 /* Formatter.swift */,
-				80E32DF9205C18FC008D8B7C /* Image.swift */,
 				80B67253205AA7B200FD0780 /* Curve.swift */,
 			);
 			name = Extention;
@@ -387,7 +384,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				80B67234205AA0A100FD0780 /* ViewController.swift in Sources */,
-				80E32DFA205C18FC008D8B7C /* Image.swift in Sources */,
 				808D8B83205B784200549B34 /* Filter.swift in Sources */,
 				80A81022205C6AE90059BB22 /* Formatter.swift in Sources */,
 				80B67252205AA44200FD0780 /* Connection.swift in Sources */,

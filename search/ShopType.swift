@@ -11,18 +11,30 @@ import KeychainSwift
 
 class ShopType: UIViewController{
 
-    var gold = ""
+    @IBOutlet weak var goldSwitch: UISwitch!
+    @IBOutlet weak var officialSwitch: UISwitch!
+    
+    var gold = "2"
     var official = true
     let key = KeychainSwift()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        prepareSwitch()
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func prepareSwitch(){
+        if official == true{
+            officialSwitch.setOn(true, animated: true)
+        }else{
+            officialSwitch.setOn(false, animated: true)
+        }
+        if gold == "2"{
+            goldSwitch.setOn(true, animated: true)
+        }else{
+            goldSwitch.setOn(false, animated: true)
+        }
     }
     
     @IBAction func close(_ sender: UIBarButtonItem) {
@@ -30,9 +42,9 @@ class ShopType: UIViewController{
     }
    
     @IBAction func goldMerchant(_ sender: UISwitch) {
-        if sender.isOn{
+        if sender.isOn == true{
             gold = "2"
-        }else{
+        }else if sender.isOn == false{
             gold = "1"
         }
     }
@@ -40,31 +52,36 @@ class ShopType: UIViewController{
     func setValue(){
         let nav = presentingViewController as! UINavigationController
         let controller = nav.topViewController as! Filter
-        controller.gold = gold
-        controller.official = official
+        
+        if official == true{
+            controller.officialLabel.isHidden = false
+            controller.official = true
+        }else if official == false{
+            controller.officialLabel.isHidden = true
+            controller.official = false
+        }
+        
+        if gold == "2"{
+            controller.goldLabel.isHidden = false
+            controller.gold = "2"
+        }else if gold == "1"{
+            controller.goldLabel.isHidden = true
+            controller.gold = "1"
+        }
     }
     
     @IBAction func officialStore(_ sender: UISwitch) {
-        if sender.isOn{
+        if sender.isOn == true{
             official = true
-        }else{
+        }else if sender.isOn == false{
             official = false
         }
     }
     
     @IBAction func apply(_ sender: UIButton) {
+        setValue()
         key.set(gold, forKey: "gold")
         key.set(official, forKey: "official")
         self.dismiss(animated: true)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

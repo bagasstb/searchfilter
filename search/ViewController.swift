@@ -12,56 +12,60 @@ import SwiftyJSON
 import SDWebImage
 import KeychainSwift
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
     var Array = [[String]]()
+    var screenSize: CGRect!
+    var screenWidth: CGFloat!
+    var screenHeight: CGFloat!
+    var totalData = 0
     
     let key = KeychainSwift()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         collectionView.delegate = self
         collectionView.dataSource = self
-        //setValue()
-        loadData()
-        //let layout = collectionView as! UICollectionViewFlowLayout
-        //layout.sectionInset = UIEdgeInsets(top: 0,left: 5,bottom: 0,right: 5)
-        //layout.minimumInteritemSpacing = 5
+        collectioSetting()
+        loadData(row: 10, lastRow: 0)
+       
     }
     
-    func loadData(){
-        var url = ""
-        if key.get("max") != nil{
-            url = Service().ulr(name: "Samsung", min: key.get("min")!, max: key.get("max")!, wholeshale: (key.get("wholeSale") != nil), official: (key.get("official") != nil), gold: key.get("gold")!, start: 0, row: 10)
-        }else{
-            url = Service().ulr(name: "Samsung", min: "10000", max: "100000", wholeshale: true, official: true, gold: "2", start: 0, row: 10)
-        }
+    func collectioSetting(){
+        let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.sectionInset = UIEdgeInsets(top: 0,left: 5,bottom: 0,right: 5)
+        layout.minimumInteritemSpacing = 0
+        layout.itemSize = CGSize(width:(self.collectionView.frame.size.width - 20)/2, height : (self.collectionView.frame.size.height)/2.5)
+        collectionView!.collectionViewLayout = layout
+    }
+    
+    func loadData(row: Int, lastRow: Int){
         
-        Service().Registered(url: url){
+        Service().Registered(url: url(row: row)){
             (data: DataResponse) in
             switch data.result{
             case .success(let data):
                 let json = JSON(data)
                 let status = json["status"]["error_code"].stringValue
                 if status == "0"{
-                    let total_data = json["header"]["total_data"].stringValue
-                    if total_data != "0"{
+                    let total_data = json["header"]["total_data"].intValue
+                    self.totalData = total_data
+                    if total_data >= 0{
                         let datas = JSON(json["data"])
-                        print(datas)
-                        var index = 0
+                        var datasCount = datas.count
+                        var index = datasCount-1
                         for _ in datas{
                             let image = datas[index]["image_uri_700"].stringValue
                             let name = datas[index]["name"].stringValue
                             let price = datas[index]["price"].stringValue
-                            print(image)
-                            print(name)
-                            print(price)
                             let array = [image, name, price]
-                            self.Array.append(array)
-                            index += 1
+                            if datasCount > lastRow{
+                                self.Array.append(array)
+                            }
+                            datasCount -= 1
+                            index -= 1
                         }
                         self.collectionView.reloadData()
                     }else{
@@ -74,6 +78,16 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 print(error)
             }
         }
+    }
+    
+    func url(row: Int)-> String{
+        var url = ""
+        if key.get("max") != nil{
+            url = Service().ulr(name: "Samsung", min: key.get("min")!, max: key.get("max")!, wholeshale: key.getBool("wholeSale")!, official: key.getBool("official")!, gold: key.get("gold")!, start: 0, row: row)
+        }else{
+            url = Service().ulr(name: "Samsung", min: "10000", max: "100000", wholeshale: true, official: true, gold: "2", start: 0, row: row)
+        }
+        return url
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -89,8 +103,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CollectionViewCell
         let row = Array[indexPath.row]
         let imgURL = row[0]
-        
-        print(imgURL)
         let imageView = cell.picture
         imageView?.sd_setImage(with: URL(string:imgURL))
         cell.name.text = row[1]
@@ -99,9 +111,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return cell
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let lastRow = Array.count - 1
+        if indexPath.row == lastRow{
+            if lastRow+1  < totalData{
+                loadData(row: lastRow + 11, lastRow: lastRow+1)
+            }
+        }
     }
 }
 
