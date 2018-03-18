@@ -36,18 +36,6 @@ class ShopType: UIViewController{
         }
     }
     
-    @IBAction func close(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true)
-    }
-   
-    @IBAction func goldMerchant(_ sender: UISwitch) {
-        if sender.isOn == true{
-            gold = "2"
-        }else if sender.isOn == false{
-            gold = "1"
-        }
-    }
-    
     func setValue(){
         let nav = presentingViewController as! UINavigationController
         let controller = nav.topViewController as! Filter
@@ -66,6 +54,18 @@ class ShopType: UIViewController{
         }else if gold == "1"{
             controller.goldLabel.isHidden = true
             controller.gold = "1"
+        }
+    }
+
+    @IBAction func close(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true)
+    }
+   
+    @IBAction func goldMerchant(_ sender: UISwitch) {
+        if sender.isOn == true{
+            gold = "2"
+        }else if sender.isOn == false{
+            gold = "1"
         }
     }
     

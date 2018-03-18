@@ -540,7 +540,7 @@
                                                 <rect key="frame" x="211" y="0.0" width="51" height="31"/>
                                                 <color key="onTintColor" red="0.25703084469999998" green="0.70868140459999995" blue="0.28645437959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
-                                                    <action selector="goldMerchant:" destination="Fh7-OZ-Ovs" eventType="valueChanged" id="Msb-is-IQJ"/>
+                                                    <action selector="goldMerchant:" destination="Fh7-OZ-Ovs" eventType="valueChanged" id="xma-BT-BPz"/>
                                                 </connections>
                                             </switch>
                                         </subviews>
@@ -558,7 +558,7 @@
                                                 <rect key="frame" x="211" y="0.0" width="51" height="31"/>
                                                 <color key="onTintColor" red="0.25703084469999998" green="0.70868140459999995" blue="0.28645437959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
-                                                    <action selector="officialStore:" destination="Fh7-OZ-Ovs" eventType="valueChanged" id="yYh-Ia-zdi"/>
+                                                    <action selector="officialStore:" destination="Fh7-OZ-Ovs" eventType="valueChanged" id="A8o-Wh-6u6"/>
                                                 </connections>
                                             </switch>
                                         </subviews>
@@ -629,6 +629,10 @@
                             <constraint firstAttribute="trailing" secondItem="NAP-HV-wxF" secondAttribute="trailing" constant="10" id="bCd-Ox-4hw"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="goldSwitch" destination="qUN-oQ-Xyf" id="p3B-Eh-y4D"/>
+                        <outlet property="officialSwitch" destination="Fum-6n-3BW" id="YHr-Mf-die"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E4L-5G-qax" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
