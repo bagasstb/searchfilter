@@ -36,13 +36,14 @@ class Service{
         var keyOfficial = key.getBool("official")
         var keyGold = key.get("gold")
         
-        if keyMax != ""{
+        print("keyMax: \(keyMax)")
+        if keyMax != nil{
             keyMax = key.get("max")
         }else{
             keyMax = "8000000"
         }
         
-        if keyMin != ""{
+        if keyMin != nil{
             keyMin = key.get("min")
         }else{
             keyMin = "10000"

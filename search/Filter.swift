@@ -42,7 +42,7 @@ class Filter: UIViewController, RangeSeekSliderDelegate {
         let keyOfficial = key.getBool("official")
         let keyGold = key.get("gold")
         
-        if keyMax != ""{
+        if keyMax != nil{
             maxValue.text = "Rp \(Formatter().separator(value: keyMax))"
             let maxFloat = NumberFormatter().number(from: keyMax!)
             seeker.selectedMaxValue = CGFloat(maxFloat!)
@@ -51,7 +51,7 @@ class Filter: UIViewController, RangeSeekSliderDelegate {
             seeker.selectedMaxValue = CGFloat(max)
         }
         
-        if keyMin != ""{
+        if keyMin != nil{
             minValue.text = "Rp \(Formatter().separator(value: keyMin))"
             let minFloat = NumberFormatter().number(from: keyMin!)
             seeker.selectedMinValue = CGFloat(minFloat!)
